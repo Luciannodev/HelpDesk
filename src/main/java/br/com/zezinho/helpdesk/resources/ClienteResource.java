@@ -5,7 +5,6 @@ import br.com.zezinho.helpdesk.domain.dto.ClienteDTO;
 import br.com.zezinho.helpdesk.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/clientes")
-@PreAuthorize("hasRole('ROLE_CLIENTE')")
+
 public class ClienteResource {
     @Autowired
     private ClienteService service;
@@ -28,6 +27,7 @@ public class ClienteResource {
     }
 
     @GetMapping
+
     public ResponseEntity<List<ClienteDTO>> findAll() {
         List<Cliente> listaTecnicos = service.findAll();
         List<ClienteDTO> listaTecnicosDTO = listaTecnicos.stream().map(cliente -> new ClienteDTO(cliente)).collect(Collectors.toList());

@@ -5,6 +5,7 @@ import br.com.zezinho.helpdesk.domain.dto.ChamadoDTO;
 import br.com.zezinho.helpdesk.services.ChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -24,9 +25,9 @@ public class ChamadoResource {
         Chamado chamado = service.findById(id);
         return ResponseEntity.ok(new ChamadoDTO(chamado));
     }
-
+    @PreAuthorize("hasRole('ADMIN','TECNICO')")
     @GetMapping
-    public ResponseEntity<List<ChamadoDTO>> findById() {
+    public ResponseEntity<List<ChamadoDTO>> findByAll() {
         var chamados = service.findAll();
         List<ChamadoDTO> chamadosDTO = chamados.stream().map(chamado -> new ChamadoDTO(chamado)).collect(Collectors.toList());
         return ResponseEntity.ok(chamadosDTO);

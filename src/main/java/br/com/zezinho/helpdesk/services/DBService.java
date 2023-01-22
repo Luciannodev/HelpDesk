@@ -27,9 +27,9 @@ public class DBService {
     private BCryptPasswordEncoder encoder;
     public void instanciaDB(){
         Tecnico tec1 = new Tecnico
-                ("jose luciano","13731581744","jose.dev@gamil.com", encoder.encode("123456"));
+                ("jose luciano","29956397032","jose.dev@gamil.com", encoder.encode("123456"));
         tec1.addPerfil(Perfil.TECNICO);
-        Cliente cli1 = new Cliente("Xavier da silva","74966278791","jose.luciano@gamilcom",encoder.encode("123456"));
+        Cliente cli1 = new Cliente("Xavier da silva","06722582000","jose.luciano@gamilcom",encoder.encode("123456"));
         Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO,"chamado 01","primerio chamado",tec1,cli1);
 
         tecnicoRepository.saveAll(Arrays.asList(tec1));

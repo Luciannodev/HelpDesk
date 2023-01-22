@@ -3,42 +3,41 @@ package br.com.zezinho.helpdesk.config;
 import br.com.zezinho.helpdesk.security.JWTAuthenticationFilter;
 import br.com.zezinho.helpdesk.security.JWTAuthorizationFilter;
 import br.com.zezinho.helpdesk.security.JWTUtil;
-import br.com.zezinho.helpdesk.services.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
-import javax.servlet.Filter;
-
-@EnableWebSecurity
+@Configuration
 @RequiredArgsConstructor
+@EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration {
 
     private final JWTAuthorizationFilter jwtAuthorizationFilter;
     private final AuthenticationProvider authenticationProvider;
 
-    private final JWTAuthenticationFilter jwtAuthenticationFilter;
-
-
+    private final JWTUtil jwtUtil;
 
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authenticationManager) throws Exception {
+        JWTAuthenticationFilter jwtAuthenticationFilter = new JWTAuthenticationFilter(jwtUtil);
+        jwtAuthenticationFilter.setAuthenticationManager(authenticationManager);
+        jwtAuthenticationFilter.setFilterProcessesUrl("/login");
 
         http
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .regexMatchers("/")
-                .permitAll()
+                .antMatchers("/clientes").hasRole("CLIENTE")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -47,10 +46,11 @@ public class SecurityConfiguration {
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilter(jwtAuthenticationFilter)
-                .addFilterBefore(jwtAuthorizationFilter, OncePerRequestFilter.class);
+                .addFilterBefore(jwtAuthorizationFilter, BasicAuthenticationFilter.class);
         return http.build();
 
     }
+
 }
 
 

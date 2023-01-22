@@ -1,6 +1,5 @@
 package br.com.zezinho.helpdesk.domain;
 
-import br.com.zezinho.helpdesk.domain.dto.ChamadoDTO;
 import br.com.zezinho.helpdesk.domain.enums.Prioridade;
 import br.com.zezinho.helpdesk.domain.enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;

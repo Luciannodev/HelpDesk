@@ -1,7 +1,6 @@
 package br.com.zezinho.helpdesk.domain;
 
 import br.com.zezinho.helpdesk.domain.dto.ClienteDTO;
-import br.com.zezinho.helpdesk.domain.dto.TecnicoDTO;
 import br.com.zezinho.helpdesk.domain.enums.Perfil;
 import lombok.Getter;
 import lombok.Setter;

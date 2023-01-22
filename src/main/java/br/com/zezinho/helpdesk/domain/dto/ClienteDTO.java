@@ -1,7 +1,6 @@
 package br.com.zezinho.helpdesk.domain.dto;
 
 import br.com.zezinho.helpdesk.domain.Cliente;
-import br.com.zezinho.helpdesk.domain.Tecnico;
 import br.com.zezinho.helpdesk.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;

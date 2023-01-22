@@ -1,7 +1,7 @@
 package br.com.zezinho.helpdesk.services;
 
-import br.com.zezinho.helpdesk.domain.Pessoa;
 import br.com.zezinho.helpdesk.domain.Cliente;
+import br.com.zezinho.helpdesk.domain.Pessoa;
 import br.com.zezinho.helpdesk.domain.dto.ClienteDTO;
 import br.com.zezinho.helpdesk.repository.ClienteRepository;
 import br.com.zezinho.helpdesk.repository.PessoaRepository;
@@ -45,6 +45,8 @@ public class ClienteService {
     public Cliente update(Integer id, @Valid ClienteDTO clienteDto) {
         clienteDto.setId(id);
         Cliente cliente = findById(id);
+        if (!clienteDto.getSenha().equals(cliente.getSenha()))
+            clienteDto.setSenha(encoder.encode(clienteDto.getSenha()));
         validaPorCpfEEmail(clienteDto);
         cliente = new Cliente(clienteDto);
         return clienteRepository.save(cliente);

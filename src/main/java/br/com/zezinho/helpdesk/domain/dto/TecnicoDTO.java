@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
-
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -29,6 +28,7 @@ public class TecnicoDTO implements Serializable {
     protected Set<Integer> perfis = new HashSet<>();
     @JsonFormat(pattern = "dd/MM/YYYY")
     protected LocalDate datacriacao = LocalDate.now();
+
 
     public TecnicoDTO() {
         super();
