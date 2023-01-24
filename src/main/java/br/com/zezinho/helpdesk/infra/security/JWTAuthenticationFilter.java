@@ -1,6 +1,7 @@
-package br.com.zezinho.helpdesk.security;
+package br.com.zezinho.helpdesk.infra.security;
 
 import br.com.zezinho.helpdesk.domain.dto.CredenciaisDTO;
+import br.com.zezinho.helpdesk.infra.security.expcetion.TokenError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,7 +37,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             Authentication authentication = getAuthenticationManager().authenticate(authenticationToken);
             return authentication;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new TokenError("Authenticated error");
         }
     }
 

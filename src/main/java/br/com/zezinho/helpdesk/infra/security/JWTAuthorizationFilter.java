@@ -1,6 +1,8 @@
-package br.com.zezinho.helpdesk.security;
+package br.com.zezinho.helpdesk.infra.security;
 
+import br.com.zezinho.helpdesk.infra.security.expcetion.TokenError;
 import br.com.zezinho.helpdesk.services.UserDetailsServiceImpl;
+import lombok.SneakyThrows;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,20 +30,19 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
 
+    @SneakyThrows
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         String header = request.getHeader("Authorization");
         if (header != null && header.startsWith("Bearer ")) {
             UsernamePasswordAuthenticationToken authToken = null;
-            try {
-                authToken = getAuthentication(header.substring(7));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            authToken = getAuthentication(header.substring(7));
             if (authToken != null) {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
+        } else {
+            throw new TokenError("authorization error");
         }
         chain.doFilter(request, response);
     }
@@ -52,7 +53,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
             UserDetails details = userDetailsService.loadUserByUsername(username);
             return new UsernamePasswordAuthenticationToken(details.getUsername(), null, details.getAuthorities());
         }
-        throw new Exception("Usuario não permitido");
+        throw new TokenError("Authorization error");
     }
 
 }

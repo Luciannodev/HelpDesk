@@ -1,4 +1,4 @@
-package br.com.zezinho.helpdesk.security;
+package br.com.zezinho.helpdesk.infra.security;
 
 import java.util.Collection;
 import java.util.Set;

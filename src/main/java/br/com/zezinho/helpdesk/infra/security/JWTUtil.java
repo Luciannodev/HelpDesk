@@ -1,6 +1,7 @@
-package br.com.zezinho.helpdesk.security;
+package br.com.zezinho.helpdesk.infra.security;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -52,8 +53,8 @@ public class JWTUtil {
                     .build()
                     .parseClaimsJws(token)
                     .getBody();
-        } catch (Exception e) {
-            throw new Exception("Token não autorizado");
+        } catch (ExpiredJwtException e) {
+            throw new Exception("Expired token "+e.getMessage());
         }
     }
 
@@ -67,6 +68,6 @@ public class JWTUtil {
         if (claims != null) {
             return claims.getSubject();
         }
-        throw new Exception("esse token não é válido");
+        throw new Exception("token error");
     }
 }
