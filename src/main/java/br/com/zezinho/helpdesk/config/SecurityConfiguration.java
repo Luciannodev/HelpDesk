@@ -1,17 +1,15 @@
 package br.com.zezinho.helpdesk.config;
 
-import br.com.zezinho.helpdesk.security.JWTAuthenticationFilter;
-import br.com.zezinho.helpdesk.security.JWTAuthorizationFilter;
-import br.com.zezinho.helpdesk.security.JWTUtil;
+import br.com.zezinho.helpdesk.infra.security.JWTAuthenticationFilter;
+import br.com.zezinho.helpdesk.infra.security.JWTAuthorizationFilter;
+import br.com.zezinho.helpdesk.infra.security.JWTUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;

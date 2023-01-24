@@ -1,4 +1,4 @@
-package br.com.zezinho.helpdesk.security;
+package br.com.zezinho.helpdesk.infra.security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

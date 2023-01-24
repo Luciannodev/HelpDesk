@@ -2,11 +2,9 @@ package br.com.zezinho.helpdesk.services;
 
 import br.com.zezinho.helpdesk.domain.Pessoa;
 import br.com.zezinho.helpdesk.repository.PessoaRepository;
-import br.com.zezinho.helpdesk.security.UserSS;
+import br.com.zezinho.helpdesk.infra.security.UserSS;
 import br.com.zezinho.helpdesk.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
