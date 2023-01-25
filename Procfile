@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/app.jar
+web: java -jar -Dserver.port=$PORT target/HelpDeskApplication.war
