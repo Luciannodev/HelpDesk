@@ -1,1 +1,1 @@
-web: java -jar -Dserver.port=$PORT target/HelpDeskApplication.war
+java -jar -Dserver.port=$PORT build/libs/HelpDesk-0.0.1-SNAPSHOT-plain.jar
