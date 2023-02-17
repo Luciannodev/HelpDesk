@@ -41,7 +41,7 @@ tasks.withType<Test> {
 
 tasks.withType<Jar> {
 	manifest {
-		attributes["Main-Class"] = "br.com.zezinho.helpdesk"
+		attributes["Main-Class"] = "br.com.zezinho.helpdesk.*.class"
 	}
 }
 
