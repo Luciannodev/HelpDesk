@@ -41,9 +41,12 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-tasks.withType<Jar> {
+tasks.withType<Jar>() {
 	manifest {
-		attributes["Main-Class"] = "src.main.java.br.com.zezinho.helpdesk"
+		attributes["Main-Class"] = "br.com.zezinho.helpdesk"
+	}
+	configurations["compileClasspath"].forEach { file: File ->
+		from(zipTree(file.absoluteFile))
 	}
 }
 
