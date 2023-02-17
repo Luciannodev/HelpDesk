@@ -39,4 +39,9 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+tasks.withType<Jar> {
+	manifest {
+		attributes["Main-Class"] = "br.com.zezinho.helpdesk"
+	}
+}
 
