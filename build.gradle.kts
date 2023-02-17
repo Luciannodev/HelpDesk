@@ -4,6 +4,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.0"
 }
 
+
 group = "br.com.zezinho"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -35,13 +36,15 @@ dependencies {
 }
 
 
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
 tasks.withType<Jar> {
 	manifest {
-		attributes["Main-Class"] = "br.com.zezinho.helpdesk.*.class"
+		attributes["Main-Class"] = "src.main.java.br.com.zezinho.helpdesk"
 	}
 }
+
 
