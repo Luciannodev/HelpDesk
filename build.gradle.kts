@@ -8,6 +8,7 @@ plugins {
 group = "br.com.zezinho"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
+val mainClassName = "HelpDeskApplication"
 
 configurations {
 	compileOnly {
@@ -41,7 +42,11 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-
+tasks.withType<Jar> {
+	manifest {
+		attributes("Main-Class" to "${project.group}.$mainClassName")
+	}
+}
 
 
 
