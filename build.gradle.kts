@@ -42,15 +42,7 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-tasks.jar {
-	manifest.attributes["Main-Class"] = "br.com.zezinho.helpdesk"
-	manifest.attributes["Class-Path"] = configurations
-		.runtimeClasspath
-		.get()
-		.joinToString(separator = " ") { file ->
-			"build/libs/HelpDesk-0.0.1-SNAPSHOT.jar"
-		}
-}
+
 
 
 
