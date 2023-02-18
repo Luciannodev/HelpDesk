@@ -9,7 +9,6 @@ plugins {
 
 group = "br.com.zezinho"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
 val mainClassName = "HelpDeskApplication.java"
 
 configurations {
@@ -41,7 +40,7 @@ dependencies {
 
 tasks.jar {
 	manifest {
-		attributes["Main-Class"] = "src.main.java.br.com.zezinho.helpdesk.HelpDeskApplication.java"
+		attributes["Main-Class"] = "br.com.zezinho.helpdesk.HelpDeskApplication.java"
 	}
 }
 
