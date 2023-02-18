@@ -48,7 +48,7 @@ tasks.jar {
 		.runtimeClasspath
 		.get()
 		.joinToString(separator = " ") { file ->
-			"libs/${file.name}"
+			"build/libs/HelpDesk-0.0.1-SNAPSHOT.jar"
 		}
 }
 
