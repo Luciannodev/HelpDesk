@@ -42,12 +42,15 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-tasks.withType<Jar> {
-	manifest {
-		attributes("Main-Class" to "${project.group}.$mainClassName")
-	}
+tasks.jar {
+	manifest.attributes["Main-Class"] = "br.com.zezinho.helpdesk"
+	manifest.attributes["Class-Path"] = configurations
+		.runtimeClasspath
+		.get()
+		.joinToString(separator = " ") { file ->
+			"libs/${file.name}"
+		}
 }
-
 
 
 
