@@ -41,7 +41,7 @@ dependencies {
 
 tasks.jar {
 	manifest {
-		attributes["Main-Class"] = "br.com.zezinho.helpdesk.HelpDeskApplication.java"
+		attributes["Main-Class"] = "src.main.java.br.com.zezinho.helpdesk.HelpDeskApplication.java"
 	}
 }
 
