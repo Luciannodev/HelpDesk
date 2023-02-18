@@ -1,3 +1,5 @@
+import groovy.xml.dom.DOMCategory.attributes
+
 plugins {
 	java
 	id("org.springframework.boot") version "2.7.8"
@@ -37,12 +39,11 @@ dependencies {
 }
 
 
-
-tasks.withType<Test> {
-	useJUnitPlatform()
+tasks.jar {
+	manifest {
+		attributes["Main-Class"] = "com.example.MyMainClass"
+	}
 }
-
-
 
 
 
