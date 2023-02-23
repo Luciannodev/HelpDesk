@@ -50,3 +50,9 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
+tasks.withType<Jar> {
+	manifest {
+		attributes["Main-Class"] = "br.com.zezinho.helpdesk"
+	}
+}
+
