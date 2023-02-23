@@ -14,7 +14,6 @@ plugins {
 
 group = "br.com.zezinho"
 version = "0.0.1-SNAPSHOT"
-val mainClassName = "HelpDeskApplication.java"
 
 configurations {
 	compileOnly {
