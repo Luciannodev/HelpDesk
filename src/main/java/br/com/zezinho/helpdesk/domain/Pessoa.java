@@ -22,7 +22,7 @@ public abstract class Pessoa implements Serializable{
     @Column(name = "id", nullable = false)
     protected Integer id;
     protected String nome;
-    @CPF
+    @CPF(message = "Cpf inválido")
     @Column(unique = true)
     protected String cpf;
     @Column(unique = true)
