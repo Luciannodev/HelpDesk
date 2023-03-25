@@ -13,7 +13,7 @@ sourceCompatibility = '11'
 jar {
     manifest {
         attributes(
-                'Main-Class': 'br.com.zezinho.helpdesk.HelpDeskApplication'
+                'Main-Class': 'br.com.zezinho.helpdesk.HelpDeskApplication.class'
         )
     }
 }
