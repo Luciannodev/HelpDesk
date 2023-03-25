@@ -8,9 +8,15 @@ plugins {
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
-mainClassName= 'br.com.zezinho.helpdesk.HelpDeskApplication'
 
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'br.com.zezinho.helpdesk.HelpDeskApplication'
+        )
+    }
+}
 repositories {
     mavenCentral()
 }
