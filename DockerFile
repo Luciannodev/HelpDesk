@@ -1,7 +1,0 @@
-FROM gradle:7.6.0-jdk8
-
-
-
-
-EXPOSE 8080
-ENTRYPOINT ["gradle","bootrun"]
